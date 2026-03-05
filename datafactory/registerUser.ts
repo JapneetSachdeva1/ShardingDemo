@@ -1,10 +1,10 @@
 import { request, expect } from '@playwright/test';
-import { faker } from '@faker-js/faker';
 
 export async function registerNewUser(email: string, password: string) {
   const apiURL = process.env.API_URL ?? 'https://api.practicesoftwaretesting.com';
 
   const createRequestContext = await request.newContext();
+  const { faker } = await import('@faker-js/faker');
   const response = await createRequestContext.post(`${apiURL}/users/register`, {
     data: {
       first_name: faker.person.firstName(),

@@ -1,5 +1,4 @@
 import { Page,Locator } from '@playwright/test';
-import { faker } from '@faker-js/faker';
 
 export type RegisteredUserCredentials = {
   email: string;
@@ -43,6 +42,7 @@ export class RegisterPage {
   }
 
   async registerValidRandomUser(): Promise<RegisteredUserCredentials> {
+    const { faker } = await import('@faker-js/faker');
     const firstName = faker.person.firstName();
     const lastName = faker.person.lastName();
     const street = faker.location.streetAddress();
